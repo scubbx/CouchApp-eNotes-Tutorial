@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>First Steps with CouchAPP &mdash; Enotes CouchApp Tutorial v0.2 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Enotes CouchApp Tutorial v0.2 documentation" href="index.html" />
+    <link rel="next" title="Write the Interface" href="3-Interface.html" />
+    <link rel="prev" title="Needed Software" href="1-UsedSoftware.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="3-Interface.html" title="Write the Interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="1-UsedSoftware.html" title="Needed Software"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Enotes CouchApp Tutorial v0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="first-steps-with-couchapp">
+<h1>First Steps with CouchAPP<a class="headerlink" href="#first-steps-with-couchapp" title="Permalink to this headline">¶</a></h1>
+<p>Here you will learn some details of the folder structure and the meaning of specific files inside your CouchApp directory. If you feel familiar enough with this, you may already proceed to the next topic, but bear in mind to at least generate an empty CouchApp before proceeding any further.</p>
+<div class="section" id="start-with-couchapp">
+<h2>Start with CouchApp<a class="headerlink" href="#start-with-couchapp" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-working-directories-and-files">
+<h3>Create working directories and files<a class="headerlink" href="#create-working-directories-and-files" title="Permalink to this headline">¶</a></h3>
+<p>To set up a CouchApp, we start the actual CouchApp program to generate a directory structure where all of our code will be saved to at corresponding places. After the upload of our CouchApp into a CouchDB, most of these files and folders will form the design document of our application.</p>
+<p>Move to any directory you like. Don&#8217;t worry, a sub directory for our project will be created in our next step automatically. For this example I will go to my <em>./Documents</em> folder and start the <tt class="docutils literal"><span class="pre">couchapp</span></tt> program with it&#8217;s appropriate arguments. You may use whatever directory you like.:</p>
+<div class="highlight-python"><pre>$ cd Documents
+
+/Documents$ couchapp generate enotes</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">couchapp</span></tt> command is launched with the <tt class="docutils literal"><span class="pre">generate</span></tt> option. This will command couchapp to generate a new CouchApp project and trigger the creation of all necessary directories. The <tt class="docutils literal"><span class="pre">enotes</span></tt> part describes the name of our application. Acutally, you may change it to your liking, but for reasons of compatibility to this tutorial I recommend you to stick with this proposition.</p>
+<p>If we take a look at the newly generated file tree we see the following directories and files (there are also hidden files!):</p>
+<div class="highlight-python"><pre>enotes$ ls
+
+./_attachments
+./lists
+./shows
+./updates
+./vendor
+./views
+.chouchappignore
+.couchapprc
+couchapp.json
+_id
+language
+README.md</pre>
+</div>
+<p>We will go through each of this entries and explain what they are. If necessary we will also fill in certain values.</p>
+</div>
+<div class="section" id="couchappignore">
+<h3>.couchappignore<a class="headerlink" href="#couchappignore" title="Permalink to this headline">¶</a></h3>
+<p>This file defines files or folders that may be located inside our tree but should not be uploaded to the CouchDB. Regular Expressions (RegEx) are used to define these.
+The <tt class="docutils literal"><span class="pre">.couchappignore</span></tt> default looks like this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">[</span>
+<span class="c1">// filenames matching these regexps will not be pushed to the database</span>
+<span class="c1">// uncomment to activate; separate entries with &quot;,&quot;</span>
+<span class="c1">// &quot;.*~$&quot;</span>
+<span class="c1">// &quot;.*\\.swp$&quot;</span>
+<span class="c1">// &quot;.*\\.bak$&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>As we can see, all possible pre-defined values are switched off by the leading <tt class="docutils literal"><span class="pre">//</span></tt>. If you ever produce objects that are not necessary for your CouchApp to work (like a SVN control directory), you should include a line for them here. We do not need to do this for our CouchApp tutorial.</p>
+</div>
+<div class="section" id="couchapprc">
+<h3>.couchapprc<a class="headerlink" href="#couchapprc" title="Permalink to this headline">¶</a></h3>
+<p>The hidden <tt class="docutils literal"><span class="pre">.couchapprc</span></tt> file contains information of the CouchDB (or CouchDBs) our application will be integrated into in <em>JSON</em> format. The file looks like this when it is initially generated:</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{}</span>
+</pre></div>
+</div>
+<p>We don&#8217;t need to fill anything in here, but it could be very helpful when finally uploading the CouchApp to a CouchDB. It may look like this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;env&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;testDB&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;db&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://localhost:5984/test-database&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;finalDB&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;db&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://username:password@anyserver.com/final-database&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;default&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;db&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://localhost:5984/default-database&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example above (which we <em>don&#8217;t</em> enter in our file right now), there are three different databases specified by JSON notation in the <tt class="docutils literal"><span class="pre">env</span></tt> section. When uploading the CouchApp later on we don&#8217;t have to specify the database connections but can simply use the terms <tt class="docutils literal"><span class="pre">testDB</span></tt> or <tt class="docutils literal"><span class="pre">finalDB</span></tt>. If no database is named when uplading the CouchApp, the one defined by the value <tt class="docutils literal"><span class="pre">default</span></tt> is used.</p>
+<p>So let&#8217;s enter the following code to our <tt class="docutils literal"><span class="pre">.couchapprc</span></tt> file:</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;env&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;default&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;db&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://localhost:5984/enotes&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By this, our default database named <tt class="docutils literal"><span class="pre">enotes</span></tt> is defined to be on our local machine (<tt class="docutils literal"><span class="pre">localhost:5894</span></tt>).
+There are more options that can be included in this file which we will ignore for the time being.</p>
+</div>
+<div class="section" id="couchapp-json">
+<h3>couchapp.json<a class="headerlink" href="#couchapp-json" title="Permalink to this headline">¶</a></h3>
+<p>This file contains basic information about our project.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Basic CouchApp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;CouchApp with changes feed and form support.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Change it to your liking.</p>
+</div>
+<div class="section" id="id">
+<h3>_id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h3>
+<p>Most of the files we edit will form the design document of our CouchApp. Every document in CouchApp needs an <tt class="docutils literal"><span class="pre">_id</span></tt> field. Design documents are identified by an id with the value <tt class="docutils literal"><span class="pre">_design/</span></tt> followed by it&#8217;s name. Hereby, this is also the default value for this file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">_design</span><span class="o">/</span><span class="n">enotes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="language">
+<h3>language<a class="headerlink" href="#language" title="Permalink to this headline">¶</a></h3>
+<p>This defines the pragramming language which is used for this project. Since we will only resort to <tt class="docutils literal"><span class="pre">javascript</span></tt>, we leave the default entry as it is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">javascript</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="readme-md">
+<h3>README.md<a class="headerlink" href="#readme-md" title="Permalink to this headline">¶</a></h3>
+<p>This is some information about what CouchApp is and how to access it.</p>
+</div>
+<div class="section" id="attachments">
+<h3>./_attachments<a class="headerlink" href="#attachments" title="Permalink to this headline">¶</a></h3>
+<p>Here, files that define the layout, interface and basic functionality of our application are stored. Files ald folders located within its directory are included as attachments to the design document. I want to draw your attention to the file <tt class="docutils literal"><span class="pre">index.html</span></tt>. It will contain our interface and is the file that is called when starting our CouchApp.</p>
+</div>
+<div class="section" id="lists-shows-updates">
+<h3>./lists   ./shows   ./updates<a class="headerlink" href="#lists-shows-updates" title="Permalink to this headline">¶</a></h3>
+<p>These folders are not used by our CouchApp.</p>
+</div>
+<div class="section" id="vendor">
+<h3>./vendor<a class="headerlink" href="#vendor" title="Permalink to this headline">¶</a></h3>
+<p>Files stored in this directory are also attached to the CouchDB design document. Usually, libraries from sources other than our manually created ones are put here, but also functions connecting the CouchApp programming interface to other libraries are located here.</p>
+</div>
+<div class="section" id="views">
+<h3>./views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h3>
+<p>All data views that are necessary are stored in this directory. Each sub folder describes one view and contains at least a <tt class="docutils literal"><span class="pre">map.js</span></tt> file, but most of the time also a <tt class="docutils literal"><span class="pre">reduce.js</span></tt>. (the latter one is not yet present in our example)
+As you might have guessed, these two files correspond to the <em>map</em> and <em>reduce</em> functions used by CouchDb.</p>
+</div>
+</div>
+<div class="section" id="upload-the-couchapp">
+<h2>Upload the CouchApp<a class="headerlink" href="#upload-the-couchapp" title="Permalink to this headline">¶</a></h2>
+<p>Without any further canges, we could upload this example CouchApp to our CouchDB. For this, we would use the couchapp program again.</p>
+<div class="highlight-python"><pre>enotes$ couchapp push enotes</pre>
+</div>
+<p>This command uses the option <tt class="docutils literal"><span class="pre">push</span></tt> to initiate the upload to the database named <tt class="docutils literal"><span class="pre">enotes</span></tt>. Note that this database will be created automatically.</p>
+<p>If you remember, we have defined a database connection in the <tt class="docutils literal"><span class="pre">.couchapprc</span></tt> file. So we could also just enter</p>
+<div class="highlight-python"><pre>enotes$ couchapp push</pre>
+</div>
+</div>
+<div class="section" id="review-the-design-document">
+<h2>Review the _design document<a class="headerlink" href="#review-the-design-document" title="Permalink to this headline">¶</a></h2>
+<p>To gain a better understanding of the principles behind CouchApp, let&#8217;s take a look at the database created by our upload.
+To do so, we enter the CouchDB gui via a web browser:</p>
+<div class="highlight-python"><pre>http://localhost:5984/_utils</pre>
+</div>
+<p>You should see a list of all your CouchDB databases of which one should be named <em>&#8220;enotes&#8221;</em>.</p>
+<blockquote>
+<div><img alt="_images/2_firstdb.png" src="_images/2_firstdb.png" />
+</div></blockquote>
+<p>Klick on it and you will see all documents that are currently stored inside this database (which contains our enotes application).</p>
+<blockquote>
+<div><img alt="_images/2_documents.jpg" src="_images/2_documents.jpg" />
+</div></blockquote>
+<p>Don&#8217;t be surprised, there is only one document present. This is the design document. When adding content later on, it will also be stored as additional documents at this very location. Open the design document.
+You should be presented with a view similar to this:</p>
+<blockquote>
+<div><img alt="_images/2_design.png" src="_images/2_design.png" style="width: 886px;" />
+</div></blockquote>
+<p>Take a look at the <tt class="docutils literal"><span class="pre">Field</span></tt> column. Most of these entries represent files or folders from our CouchApp directory tree. The files have been converted to entries in the design document of our CouchApp.
+Especially interesting is the <tt class="docutils literal"><span class="pre">_attachments</span></tt> entry. These are attached files that can be accessed directly by their URL (but are stored inside the CouchDB). The other fields are using JSON for formatting and storing information (functions, tags, ...)</p>
+</div>
+<div class="section" id="test-the-couchapp">
+<h2>Test the CouchApp<a class="headerlink" href="#test-the-couchapp" title="Permalink to this headline">¶</a></h2>
+<p>To start our CouchApp, we simply have to access the CouchDB. As we know, this is done via a simple HTTP command.:</p>
+<div class="highlight-python"><pre>http://localhost:5984/enotes/_design/enotes/index.html</pre>
+</div>
+<p>This is exaclty the same link as the one accessed when clicking on <tt class="docutils literal"><span class="pre">index.html</span></tt> in the <tt class="docutils literal"><span class="pre">_attachments</span></tt> entry in our design document.</p>
+<blockquote>
+<div><img alt="_images/2_index.jpg" src="_images/2_index.jpg" />
+</div></blockquote>
+<p>Let&#8217;s take a closer look at this url. It is quite clear that <tt class="docutils literal"><span class="pre">http://localhost:5984</span></tt> points to the CouchDB server on our local machine. The following <tt class="docutils literal"><span class="pre">/enotes</span></tt> describes the database where our CouchApp is stored. Appending <tt class="docutils literal"><span class="pre">/_design/enotes</span></tt> tells the server to open the design document with the Id <em>_design/enotes</em>. The final string <tt class="docutils literal"><span class="pre">/index.html</span></tt> accesses the appended <em>index.html</em> and therefore starts our CouchApp.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">First Steps with CouchAPP</a><ul>
+<li><a class="reference internal" href="#start-with-couchapp">Start with CouchApp</a><ul>
+<li><a class="reference internal" href="#create-working-directories-and-files">Create working directories and files</a></li>
+<li><a class="reference internal" href="#couchappignore">.couchappignore</a></li>
+<li><a class="reference internal" href="#couchapprc">.couchapprc</a></li>
+<li><a class="reference internal" href="#couchapp-json">couchapp.json</a></li>
+<li><a class="reference internal" href="#id">_id</a></li>
+<li><a class="reference internal" href="#language">language</a></li>
+<li><a class="reference internal" href="#readme-md">README.md</a></li>
+<li><a class="reference internal" href="#attachments">./_attachments</a></li>
+<li><a class="reference internal" href="#lists-shows-updates">./lists   ./shows   ./updates</a></li>
+<li><a class="reference internal" href="#vendor">./vendor</a></li>
+<li><a class="reference internal" href="#views">./views</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upload-the-couchapp">Upload the CouchApp</a></li>
+<li><a class="reference internal" href="#review-the-design-document">Review the _design document</a></li>
+<li><a class="reference internal" href="#test-the-couchapp">Test the CouchApp</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1-UsedSoftware.html"
+                        title="previous chapter">Needed Software</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="3-Interface.html"
+                        title="next chapter">Write the Interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/2-Start.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="3-Interface.html" title="Write the Interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="1-UsedSoftware.html" title="Needed Software"
+             >previous</a> |</li>
+        <li><a href="index.html">Enotes CouchApp Tutorial v0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Markus Mayr.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
