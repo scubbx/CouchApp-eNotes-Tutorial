@@ -3,6 +3,18 @@ Software Used
 
 This tutorial is written with Sphinx (http://sphinx.pocoo.org/).
 
+Dictionary Overview
+===================
+
+* **base:** The makefile and readme are located at the base.
+
+* **build:** Here goes all rendered output. Usually there will be sub-folders for different formates, e.g.: *html*, *latex* and *doctrees*
+
+* **source:** The actual source-code is located here. It is structured as a standard sphinx - project.
+
+* **extra-documents**: This folder is reserved for additional documents. Currently it holds some graphviz-dot diagrams that show the structure of the example CouchApp.
+
+
 Build instructions
 ==================
 
