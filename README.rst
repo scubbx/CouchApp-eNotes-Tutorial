@@ -2,6 +2,7 @@ Software Used
 =============
 
 This tutorial is written with Sphinx (http://sphinx.pocoo.org/).
+For more detailed information go to the project-wiki at https://github.com/scubbx/CouchApp-eNotes-Tutorial/wiki .
 
 Dictionary Overview
 ===================
