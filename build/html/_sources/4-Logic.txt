@@ -428,9 +428,6 @@ At last, we can define the function that is executed when a click happens to the
 		// id is found too late
 	}
 
-.. todo::
-	
-	explain content of click.js
 	
 Take a look at the line ``$("#editContent").trigger("shownote");``. Here, the function ``shownote`` which is linked to ``#editContent`` is called.
 Since this function does not yet exist, we have to add a second event to the ``evently`` folder called ``editContent`` (remember our ``logic.js`` - there we assign the function ``editContent`` to the link ``#addContent``). The actual link ``#addContent`` that calls the function ``editContent`` is located in ``index.html`` inside the ``addPage`` page.

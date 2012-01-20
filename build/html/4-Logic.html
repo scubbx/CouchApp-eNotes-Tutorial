@@ -450,10 +450,6 @@ This directory structure will be interpreted as a jQuery function by the couchap
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition " id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">explain content of click.js</p>
-</div>
 <p>Take a look at the line <tt class="docutils literal"><span class="pre">$(&quot;#editContent&quot;).trigger(&quot;shownote&quot;);</span></tt>. Here, the function <tt class="docutils literal"><span class="pre">shownote</span></tt> which is linked to <tt class="docutils literal"><span class="pre">#editContent</span></tt> is called.
 Since this function does not yet exist, we have to add a second event to the <tt class="docutils literal"><span class="pre">evently</span></tt> folder called <tt class="docutils literal"><span class="pre">editContent</span></tt> (remember our <tt class="docutils literal"><span class="pre">logic.js</span></tt> - there we assign the function <tt class="docutils literal"><span class="pre">editContent</span></tt> to the link <tt class="docutils literal"><span class="pre">#addContent</span></tt>). The actual link <tt class="docutils literal"><span class="pre">#addContent</span></tt> that calls the function <tt class="docutils literal"><span class="pre">editContent</span></tt> is located in <tt class="docutils literal"><span class="pre">index.html</span></tt> inside the <tt class="docutils literal"><span class="pre">addPage</span></tt> page.
 To create this function, again make a folder called <tt class="docutils literal"><span class="pre">editContent</span></tt> inside our <tt class="docutils literal"><span class="pre">evently</span></tt> folder. Within this new folder we create another directory called <tt class="docutils literal"><span class="pre">shownote</span></tt> - this is the name of our function.

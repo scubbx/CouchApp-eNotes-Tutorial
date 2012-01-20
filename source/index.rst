@@ -19,7 +19,7 @@ Please be advised that you should follow this tutorial step by step if you want 
 
 If you are interested in expanding this tutorial or correct an error, take a look at it's Github page: https://github.com/scubbx/CouchApp-eNotes-Tutorial
 
-The code is open source.
+The code on github is open source.
 
 
 .. toctree::
