@@ -12,7 +12,7 @@
 
 
 \title{CouchApp Tutorial Documentation}
-\date{January 18, 2012}
+\date{January 20, 2012}
 \release{0.2}
 \author{Markus Mayr}
 \newcommand{\sphinxlogo}{}
@@ -121,6 +121,10 @@ Basic knowledge of CouchDB, JavaScript and HTML is assumed. We will combine thes
 In this tutorial, system specific commands are based on \emph{Linux} / \emph{Bash}.
 
 Please be advised that you should follow this tutorial step by step if you want to have your CouchApp working right. There are a lot of cross references inside the code and it is easy to lose track. However, if you are confident enough to do otherwise, please feel free to do so. ;-)
+
+If you are interested in expanding this tutorial or correct an error, take a look at it's Github page: \href{https://github.com/scubbx/CouchApp-eNotes-Tutorial}{https://github.com/scubbx/CouchApp-eNotes-Tutorial}
+
+The code on github is open source.
 
 
 \chapter{Needed Software}
@@ -1189,11 +1193,6 @@ At last, we can define the function that is executed when a click happens to the
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-\begin{notice}{note}{Todo}
-
-explain content of click.js
-\end{notice}
-
 Take a look at the line \code{\$("\#editContent").trigger("shownote");}. Here, the function \code{shownote} which is linked to \code{\#editContent} is called.
 Since this function does not yet exist, we have to add a second event to the \code{evently} folder called \code{editContent} (remember our \code{logic.js} - there we assign the function \code{editContent} to the link \code{\#addContent}). The actual link \code{\#addContent} that calls the function \code{editContent} is located in \code{index.html} inside the \code{addPage} page.
 To create this function, again make a folder called \code{editContent} inside our \code{evently} folder. Within this new folder we create another directory called \code{shownote} - this is the name of our function.
@@ -1831,26 +1830,6 @@ Inside this folder, also add a \code{click.js} file and fill it with this code:
 With this we have completed the core of our CouchApp. We can create new notes which will be displayed, grouped by their assigned tags and edit them. All of this happens inside the CouchDB and your browser.
 
 As usual, you should export the CouchApp directory tree to your CouchDB with the command \code{enotes\$ couchapp push enotes}. After that, access your CouchApp in your web browser at \href{http://127.0.0.1:5984/enotes/\_design/enotes/index.html}{http://127.0.0.1:5984/enotes/\_design/enotes/index.html}.
-
-
-\chapter{Extend our CouchApp}
-\label{99-Expand::doc}\label{99-Expand:extend-our-couchapp}
-
-\section{Search Function}
-\label{99-Expand:search-function}
-
-\section{Replicaion}
-\label{99-Expand:replicaion}
-\includegraphics{graphviz-aaf431e8c49359e27d2f80e983944a8f1021fef9.pdf}
-
-blabla
-
-\begin{notice}{note}{Todo}
-
-explain content of click.js
-\end{notice}
-
-(The {\hyperref[4-Logic:index-0]{\emph{original entry}}} is located in  4-Logic.rst, line 431.)
 
 
 
