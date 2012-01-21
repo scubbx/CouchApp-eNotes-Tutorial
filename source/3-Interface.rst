@@ -75,8 +75,8 @@ We have to download the two css stylesheet files we just referenced to and move 
 jQuery UI CSS
 _____________
 
-* You can get the **jQuery UI CSS** at http://jqueryui.com/download/jquery-ui-1.8.16.custom.zip .
-* Open the downloaded archive and go to ``/css/smoothness/``. Here you will see the file ``jquery-ui-1.8.16.custom.css`` and the directory ``/image``. Extract both of them to the ``/enotes/_attachments/style/`` folder.
+* You can get the **jQuery UI CSS** at http://jqueryui.com/download .
+* Open the downloaded archive and go to ``/css``. Depending on the version you downloaded, you will see a file like ``jquery-ui-1.8.16.custom.css`` and the directory ``/image`` a sub-folder further. Extract both of them to the ``/enotes/_attachments/style/`` folder.
 * In the archive at ``/js/`` you will find two *.js* files. These need to be extracted to ``/enotes/vendor/couchapp/_attachments/``.
 
 jQuery Mobile CSS
