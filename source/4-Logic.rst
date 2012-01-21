@@ -244,8 +244,8 @@ file                         explanation                                        
                                                                                                or go to
                                                                                                http://docs.jquery.com/Downloading_jQuery
 ``jquery.mobile-1.0.min.js`` The mobile version of jQuery. A newer version than the one        :download:`Download here </_downloads/jquery.mobile-1.0.min.js>`
-                             proposed here may also work for you.                              or find it at
-                                                                                               http://jquerymobile.com/download/
+                             proposed here may also work for you. We already downloaded this   or find it at
+                             file in the previous chapter.                                     http://jquerymobile.com/download/
 ``jquery.pathbinder.js``     We need this file to use evently functions stored in the CouchApp :download:`Download here </_downloads/jquery.pathbinder.js>`
                              directory tree.
 ``jquery.evently.js``        Evently bindings                                                  :download:`Download here </_downloads/jquery.evently.js>`
@@ -519,11 +519,11 @@ Since the titleListPage is referred to in the ``click.js`` function of the ``add
 
 .. code-block:: js
 
-	function (data) {
-		$.log("evently/titleListPage/pagebeforeshow.js" + data);
-		$.log(data); 
-		$("#titleListContent").trigger("updateTitleList");
-		return data;
+    function (data) {
+        $.log("evently/titleListPage/pagebeforeshow.js" + data);
+        $.log(data); 
+        $("#titleListContent").trigger("updateTitleList");
+        return data;
     }
 
 ..
@@ -548,7 +548,7 @@ Back in the ``updateTitleList`` folder (take a look at the graphic at the beginn
 
 	.. code-block:: js
 	
-		function (data) {
+        function (data) {
             $.log("evently/titleListContent/updateTitleList/data.js");
             var tag =  $("body").data.tagSelected;
             data.key = tag;
@@ -729,14 +729,14 @@ First, we create a new folder in our ``evently`` folder named ``tagListPage``. W
 
 .. code-block:: js
 
-	function (data) {
-		$.log("evently/tagListPage/pagebeforeshow.js" + data)
-		$.log(data); 
-		$("#tagListContent").trigger("_init"); // ("updateTagList" );
-		return data;
+    function (data) {
+        $.log("evently/tagListPage/pagebeforeshow.js" + data)
+        $.log(data); 
+        $("#tagListContent").trigger("_init"); // ("updateTagList" );
+        return data;
     }
     
-As we can see, the event ``_init`` of the object ``tagListContent`` is called. We will add this function shortly. But first, create an additional directory named ``selectors`` and then, inside the one before, one called ``a``. Within ``a`` create a file called ``click.js``. Fill it with the following code:
+As we can see, the event ``_init`` of the object ``tagListContent`` is called. We will add this function shortly. But first, create an additional directory named ``_init``, inside this, one called ``selectors`` and then, inside the one before, one called ``a``. Within ``a`` create a file called ``click.js``. Fill it with the following code:
 
 .. code-block:: js
 
@@ -766,7 +766,7 @@ Now, the function ``_init`` is defined by creating a folder named ``_init`` insi
         </ul>
         
 
-Take a look at ``{{key}}`` and ``{{value}}`` - later, these occurences will be replaced by the corresponding values from a CouchDB query which itself returns key - value pairs.
+    Take a look at ``{{key}}`` and ``{{value}}`` - later, these occurences will be replaced by the corresponding values from a CouchDB query which itself returns key - value pairs.
 
 * **data.js**: 
 
@@ -949,21 +949,6 @@ Now we create the view ``DocbyTag2`` which is used to request notes of a specifi
 
 
 We won't need a reduce function here.
-
-To signal the selection of an entry, we will have to add a selector for "a" to the ``updateTitleList`` event inside the ``evently`` folder: Create a new folder named ``selectors`` inside the ``updateTitleList`` folder which itself is located inside the ``titleListContent`` directory. In there, go on by creating another one named ``a``. Inside this directory we will create a file named ``click.js``. The content of this file should be:
-
-.. code-block:: js
-
-	function(event, name, pass) {
-		var target = $(event.target);
-		$.log("selectNote in evently/titleListContent/updateTitleList/selectors/a");
-		if (target.is('a')) {
-			var idval = target.attr("id");
-			$("body").data.idSelected=idval;
-		}
-	} 
-
-This will set the ``idSelected`` value stored in the ``data`` element of the ``body`` to the ID of the selected note. This is important later on when we will actually display the content of a note.
 
 This is what you will see, if you click on any tagList item now:
 
