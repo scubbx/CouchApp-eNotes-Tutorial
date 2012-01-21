@@ -237,9 +237,9 @@ file                         explanation                                        
                              used within a web browser.
 ``jquery.couch.js``          Comes with every CouchDB installation and offers a JavaScript     find it with a file search tool on your system
                              interface for the CouchApp.                                       
-``jquery-ui*.min.js``        The actual name of this file depends on the version of CouchDB    find it with a file search tool on your system
-                             you have installed. You have to change the entry in ``loader.js``
-                             accordingly!
+``jquery-ui*.min.js``        The actual name of this file depends on the version you have      find it with a file search tool on your system
+                             dowloaded in the previous chapter. Remember to change the entry
+                             in ``loader.js`` accordingly!
 ``jquery-1.6.2.min.js``      This is the actual jQuery library.                                :download:`Download a working copy here </_downloads/jquery-1.6.2.min.js>` 
                                                                                                or go to
                                                                                                http://docs.jquery.com/Downloading_jQuery
