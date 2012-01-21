@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Write the Interface &mdash; Enotes CouchApp Tutorial v0.3 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Enotes CouchApp Tutorial v0.3 documentation" href="index.html" />
+    <link rel="next" title="Program Logic" href="4-Logic.html" />
+    <link rel="prev" title="First Steps with CouchAPP" href="2-Start.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="4-Logic.html" title="Program Logic"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="2-Start.html" title="First Steps with CouchAPP"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Enotes CouchApp Tutorial v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="write-the-interface">
+<h1>Write the Interface<a class="headerlink" href="#write-the-interface" title="Permalink to this headline">¶</a></h1>
+<p>As said previously, the interface layout is defined by HTML and CSS. This HTML and CSS are stored as attachments in the design document of our application. When we want to execute our CouchApp, we simply call the HTML. We can access attachments just like normal web-pages via its URL.</p>
+<p>The following graphic gives an overview of the files we have to download and add to our CouchApp:</p>
+<p class="graphviz">
+<img src="_images/graphviz-760f5b9834e23e898b9076f23291eb684c5f2d81.png" alt="digraph interface {
+    node [fontname=Verdana,fontsize=10]
+    node [style=filled]
+    node [fillcolor=&quot;#EEEEEE&quot;]
+    node [color=&quot;#EEEEEE&quot;]
+    edge [color=&quot;#31CEF0&quot;]
+
+    &quot;enotes&quot; [shape=box, color=grey]
+    &quot;vendor&quot;  [color=&quot;grey&quot;]
+    &quot;couchapp&quot;  [color=&quot;grey&quot;]
+    &quot;_attachments&quot;  [color=&quot;grey&quot;]
+    &quot;_attachments &quot;  [color=&quot;grey&quot;]
+    &quot;style&quot;  [color=&quot;grey&quot;]
+
+    &quot;enotes&quot; -&gt; &quot;vendor&quot;
+    &quot;vendor&quot; -&gt; &quot;couchapp&quot;
+    &quot;couchapp&quot; -&gt; &quot;_attachments&quot;
+    &quot;_attachments&quot; -&gt; &quot;jquery-1.6.2.min.js&quot;
+    &quot;_attachments&quot; -&gt; &quot;jquery-ui-1.8.16.custom.min.js&quot;
+
+    &quot;enotes&quot; -&gt; &quot;_attachments &quot;
+    &quot;_attachments &quot; -&gt; &quot;style&quot;
+    &quot;style&quot; -&gt; &quot;jquery-ui-1.8.16.custom.css&quot;
+    &quot;style&quot; -&gt; &quot;image&quot;
+    &quot;image&quot; -&gt; &quot;*.png&quot;
+
+    &quot;style&quot; -&gt; &quot;jquery.mobile-1.0.css&quot;
+}" />
+</p>
+<p>Elements not encircled by a gray line are files and folders we will create in the next sections.</p>
+<p>So, let&#8217;s just open the file <tt class="docutils literal"><span class="pre">index.html</span></tt> in the folder <tt class="docutils literal"><span class="pre">./_attachments</span></tt> for editing.</p>
+<p>It is already filled with code which we will remove completely. So we will be left with an empty file. Now it&#8217;s time to start filling in our own code!</p>
+<div class="section" id="html-structure-head">
+<h2>HTML Structure &amp; &lt;head&gt;<a class="headerlink" href="#html-structure-head" title="Permalink to this headline">¶</a></h2>
+<p>First, we enter a basic HTML structure. In the <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt> section, we will fill in <strong>meta-information</strong> and the page title. Additionally we enter references to <strong>two css stylesheets</strong> we will download afterwards:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width,minimum-scale=1,maximum-scale=1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>eNotes<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style/jquery.mobile-1.0.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style/jquery-ui-1.8.17.custom.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>The &#8220;meta-information&#8221; consists of the <tt class="docutils literal"><span class="pre">charset</span></tt> used to encode the html and the definition of the <tt class="docutils literal"><span class="pre">viewport</span></tt>. The viewport variable is important for mobile browsers so that they can resize our layout accordingly.</p>
+</div>
+<div class="section" id="css">
+<h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h2>
+<p>We have to download the two css stylesheet files we just referenced to and move them to their appropriate location in our CouchApp directory tree.</p>
+<div class="section" id="jquery-ui-css">
+<h3>jQuery UI CSS<a class="headerlink" href="#jquery-ui-css" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>You can get the <strong>jQuery UI CSS</strong> at <a class="reference external" href="http://jqueryui.com/download">http://jqueryui.com/download</a> .</li>
+<li>Open the downloaded archive and go to <tt class="docutils literal"><span class="pre">/css</span></tt>. Depending on the version you downloaded, you will see a file like <tt class="docutils literal"><span class="pre">jquery-ui-1.8.16.custom.css</span></tt> and the directory <tt class="docutils literal"><span class="pre">/image</span></tt> a sub-folder further. Extract both of them to the <tt class="docutils literal"><span class="pre">/enotes/_attachments/style/</span></tt> folder. Depending on the actual version of your files, you may have to change the references in <tt class="docutils literal"><span class="pre">index.html</span></tt> to the name of your file.</li>
+<li>In the archive at <tt class="docutils literal"><span class="pre">/js/</span></tt> you will find two <em>.js</em> files. These need to be extracted to <tt class="docutils literal"><span class="pre">/enotes/vendor/couchapp/_attachments/</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="jquery-mobile-css">
+<h3>jQuery Mobile CSS<a class="headerlink" href="#jquery-mobile-css" title="Permalink to this headline">¶</a></h3>
+<p>Download the file <a class="reference external" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.css">http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.css</a> to <tt class="docutils literal"><span class="pre">/enotes/_attachments/style/</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="javascript-library">
+<h2>JavaScript Library<a class="headerlink" href="#javascript-library" title="Permalink to this headline">¶</a></h2>
+<p>While we are at it, we may already download <strong>jQuery mobile</strong>. You can find it at <a class="reference external" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js">http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js</a> .
+Place it at <tt class="docutils literal"><span class="pre">/enotes/vendor/couchapp/_attachments/</span></tt>.</p>
+</div>
+<div class="section" id="html-body">
+<h2>HTML &lt;body&gt;<a class="headerlink" href="#html-body" title="Permalink to this headline">¶</a></h2>
+<p>Now, we will add some actually visible content to our <tt class="docutils literal"><span class="pre">index.html</span></tt>. We will use jQuery Mobile and its specialized functions a lot because this CouchApp should be usable with mobile devices.</p>
+<div class="section" id="pages">
+<h3>Pages<a class="headerlink" href="#pages" title="Permalink to this headline">¶</a></h3>
+<p>To speed up loading times when switching between different &#8220;windows&#8221; of our CouchApp, we will define <em>subpages</em> within our HTML document. So, the complete application layout is already loaded when <tt class="docutils literal"><span class="pre">index.html</span></tt> is called.
+<em>Subpages</em> are a speciality of jQuery Mobile and are defined by adding the attribute <tt class="docutils literal"><span class="pre">data-role=&quot;page&quot;</span></tt> to a div-element. These pages can be linked to by a <tt class="docutils literal"><span class="pre">href</span> <span class="pre">=</span> <span class="pre">#idOfThePage</span></tt>. For more information on pages, take a look at <a class="reference external" href="http://jquerymobile.com/test/docs/pages/page-anatomy.html">http://jquerymobile.com/test/docs/pages/page-anatomy.html</a>.</p>
+</div>
+<div class="section" id="tags-window">
+<h3>&#8220;Tags&#8221; Window<a class="headerlink" href="#tags-window" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s add our first application window - a view that will list all tags applied to any posts. This is done by defining a <em>page</em> inside the <tt class="docutils literal"><span class="pre">&lt;body&gt;</span></tt> of our html file (we will use comments to make the start and end of a page more visual):</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- ====== tagListPage =====  --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span> <span class="na">id=</span><span class="s">&quot;tagListPage&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- tagListPage --&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+...
+...
+</pre></div>
+</div>
+<p>Let&#8217;s take a look at the entry that defines our page <tt class="docutils literal"><span class="pre">&lt;div</span> <span class="pre">data-role=&quot;page&quot;</span> <span class="pre">data-theme=&quot;b&quot;</span> <span class="pre">id=&quot;tagListPage&quot;&gt;</span></tt>. As previously said, <tt class="docutils literal"><span class="pre">data-role=&quot;page&quot;</span></tt> defines a new page. By specifying <tt class="docutils literal"><span class="pre">data-theme=&quot;b&quot;</span></tt> we select the jQuery theme named <em>&#8220;b&#8221;</em> for our page. This mainly defines the colour scheme (for more information on this tag, take a look at <a class="reference external" href="http://jquerymobile.com/demos/1.0/docs/pages/pages-themes.html">http://jquerymobile.com/demos/1.0/docs/pages/pages-themes.html</a>. At last, <tt class="docutils literal"><span class="pre">id=&quot;tagListPage&quot;</span></tt> gives our page a name.</p>
+<p>Now, we need to add some content to the &#8220;tagListPage&#8221;. Actually, we could just enter some html, but jQuery mobile gives us the possibility to define a <em>header</em>, the <em>content</em> and a <em>footer</em>. This is done again by a <tt class="docutils literal"><span class="pre">&lt;div&gt;</span></tt> element with e.g. the attribute <tt class="docutils literal"><span class="pre">data-role=&quot;header&quot;</span></tt>. We should add these three sections to our newly created page:</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="c">&lt;!-- ====== tagListPage =====  --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span><span class="na">id=</span><span class="s">&quot;tagListPage&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span> <span class="na">data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;tagListContent&quot;</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">id=</span><span class="s">&quot;tagListFooter&quot;</span> <span class="na">data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- tagListPage --&gt;</span>
+...
+...
+</pre></div>
+</div>
+<p>For the time being, we just need to enter actual content to the <tt class="docutils literal"><span class="pre">header</span></tt> and <tt class="docutils literal"><span class="pre">footer</span></tt>. Data displayed in the <tt class="docutils literal"><span class="pre">content</span></tt> section will be generated later programmatically.</p>
+<p>For the data-role <strong>header</strong>, fill in:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;controlgroup&quot;</span> <span class="na">data-type=</span><span class="s">&quot;horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a&gt;</span>0.1.5 select a tag<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slideup&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span>  <span class="nt">&gt;</span>Add Item<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>The data-role <strong>footer</strong> has to be filled with:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;controlgroup&quot;</span> <span class="na">data-type=</span><span class="s">&quot;horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slideup&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="nt">&gt;</span>Add Item<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slideup&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="nt">&gt;</span>TagList<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>If we would push our CouchApp directory tree to our CouchDB right now with the command <tt class="docutils literal"><span class="pre">enotes$</span> <span class="pre">couchapp</span> <span class="pre">push</span> <span class="pre">enotes</span></tt>, we wold generate a CouchApp with the changes we have made so far.
+Then, when we would open the link <tt class="docutils literal"><span class="pre">http://localhost:5984/enotes/_design/enotes/index.html</span></tt> in our browser, an image like this would be displayed:</p>
+<blockquote>
+<div><img alt="_images/3_main.png" src="_images/3_main.png" />
+</div></blockquote>
+<p>Here we can see exactly the content of our <tt class="docutils literal"><span class="pre">index.html</span></tt>. Since we have not added any styling information or program logic, all these are displayed as plain text or hyperlinks. Nothing would happen yet, if we were to click on those links.</p>
+</div>
+<div class="section" id="list-window">
+<h3>&#8220;List&#8221; Window<a class="headerlink" href="#list-window" title="Permalink to this headline">¶</a></h3>
+<p>When we click on any tag listed, we want to be presented with all notes that are tagged with this specific tag on a new page. This &#8220;list&#8221; window also has to be described in our <tt class="docutils literal"><span class="pre">index.html</span></tt>. Add the following lines:</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="c">&lt;!-- ====== titleListPage =====  --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span><span class="na">id=</span><span class="s">&quot;titleListPage&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span> <span class="na">data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>select a note<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slideup&quot;</span> <span class="nt">&gt;</span>Add Item<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;grid&quot;</span> <span class="nt">&gt;</span>TagList<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;titleListContent&quot;</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span> <span class="na">data-transition=</span><span class="s">&quot;slideup&quot;</span> <span class="nt">&gt;</span>  Add Item  <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;grid&quot;</span> <span class="nt">&gt;</span>  TagList   <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- titleListPage --&gt;</span>
+...
+...
+</pre></div>
+</div>
+<p>This defines the layout of the page displaying a list of notes.</p>
+</div>
+<div class="section" id="add-window">
+<h3>&#8220;Add&#8221; Window<a class="headerlink" href="#add-window" title="Permalink to this headline">¶</a></h3>
+<p>Now, we want to add an additional page to our <tt class="docutils literal"><span class="pre">index.html</span></tt>. Add the following code inside the <tt class="docutils literal"><span class="pre">&lt;body&gt;</span></tt>:</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="c">&lt;!-- ====== add ===== --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span> <span class="na">id=</span><span class="s">&quot;addPage&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span>  <span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>add a single item - addPage<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;grid&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-btn-right&quot;</span><span class="nt">&gt;</span>tag list<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;addContent&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;a&gt;</span>add content in index.html <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">id=</span><span class="s">&quot;addFooter&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;controlgroup&quot;</span> <span class="na">data-type=</span><span class="s">&quot;horizontal&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">id=</span><span class="s">&quot;addCancelButton&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span><span class="nt">&gt;</span>Cancel and go to taglist<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;add new - Submit&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- add --&gt;</span>
+...
+...
+</pre></div>
+</div>
+<p>This page is shown when we want to add a new note to our application. When you take a look at the code for the other pages, you will find a link to <tt class="docutils literal"><span class="pre">#addPage</span></tt>. This link refers to this very <tt class="docutils literal"><span class="pre">id=&quot;addPage</span></tt>.</p>
+</div>
+<div class="section" id="edit-window">
+<h3>&#8220;Edit&#8221; Window<a class="headerlink" href="#edit-window" title="Permalink to this headline">¶</a></h3>
+<p>To view or edit a note, we also need a special window. Add this code to <tt class="docutils literal"><span class="pre">index.html</span></tt>:</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="c">&lt;!-- ====== show and edit ===== --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span> <span class="na">id=</span><span class="s">&quot;editPage&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--    &lt;form id=&quot;editNote&quot;&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span>  <span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>edit a single item - editpage<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;grid&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-btn-right&quot;</span><span class="nt">&gt;</span>tag list<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;editContent&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;a&gt;</span>edit content in index.html <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">id=</span><span class="s">&quot;editFooter&quot;</span>  <span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;controlgroup&quot;</span> <span class="na">data-type=</span><span class="s">&quot;horizontal&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">op=</span><span class="s">&quot;delete&quot;</span> <span class="na">href=</span><span class="s">&quot;#titleListPage&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span> <span class="nt">&gt;</span>DELETE Note<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#titleListPage&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span> <span class="nt">&gt;</span>Select other Note<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span> <span class="nt">&gt;</span>Add Item<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span> <span class="nt">&gt;</span>TagList<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">op=</span><span class="s">&quot;save&quot;</span> <span class="na">href=</span><span class="s">&quot;#titleListPage&quot;</span>  <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;a&quot;</span> <span class="nt">&gt;</span>SAVE Note<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- edit --&gt;</span>
+...
+...
+</pre></div>
+</div>
+<p>This page is not very different from the others because the actual content within the <tt class="docutils literal"><span class="pre">id=editContent</span></tt> will be added programmatically.</p>
+</div>
+<div class="section" id="error-window">
+<h3>&#8220;Error&#8221; Window<a class="headerlink" href="#error-window" title="Permalink to this headline">¶</a></h3>
+<p>The last page we will add is a special window for error messages:</p>
+<div class="highlight-html"><div class="highlight"><pre>...
+...
+<span class="c">&lt;!-- ====== error =====  --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;b&quot;</span> <span class="na">id=</span><span class="s">&quot;errorPage&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span> <span class="na">id=</span><span class="s">&quot;errorHeader&quot;</span> <span class="na">data-nobackbtn=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;grid&quot;</span> <span class="na">class=</span><span class="s">&quot;ui-btn-right&quot;</span><span class="nt">&gt;</span>tag list<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;errorContent&quot;</span> <span class="nt">&gt;</span>
+        error content
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span> <span class="na">id=</span><span class="s">&quot;errorFooter&quot;</span>  <span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui-body ui-body-b&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;ui-block-b&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#titleListPage&quot;</span>  <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span><span class="nt">&gt;</span>  Select other Note  <span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#addPage&quot;</span>  <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span><span class="nt">&gt;</span>   Add Item   <span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#tagListPage&quot;</span>  <span class="na">data-role=</span><span class="s">&quot;button&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;d&quot;</span><span class="nt">&gt;</span>   TagList   <span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- error --&gt;</span>
+...
+...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-look-at-our-couchapp">
+<h2>A Look at our CouchApp<a class="headerlink" href="#a-look-at-our-couchapp" title="Permalink to this headline">¶</a></h2>
+<p>If you want to take a look at our CouchApp so far, you have to export the dictionary tree of the CouchApp to CouchDB with: <tt class="docutils literal"><span class="pre">$enotes</span> <span class="pre">couchapp</span> <span class="pre">push</span> <span class="pre">enotes</span></tt>. After that, open our application in any web browser with the url <tt class="docutils literal"><span class="pre">http://127.0.0.1:5984/enotes/_design/enotes/index.html</span></tt>.
+You should see the following page:</p>
+<img alt="_images/3_final.png" src="_images/3_final.png" />
+<p>Since we have not implemented any jQuery or CSS, the content of <tt class="docutils literal"><span class="pre">index.html</span></tt> is displayed as it is. Each sub page we have entered is rendered at once. This will change with the next chapter.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Write the Interface</a><ul>
+<li><a class="reference internal" href="#html-structure-head">HTML Structure &amp; &lt;head&gt;</a></li>
+<li><a class="reference internal" href="#css">CSS</a><ul>
+<li><a class="reference internal" href="#jquery-ui-css">jQuery UI CSS</a></li>
+<li><a class="reference internal" href="#jquery-mobile-css">jQuery Mobile CSS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#javascript-library">JavaScript Library</a></li>
+<li><a class="reference internal" href="#html-body">HTML &lt;body&gt;</a><ul>
+<li><a class="reference internal" href="#pages">Pages</a></li>
+<li><a class="reference internal" href="#tags-window">&#8220;Tags&#8221; Window</a></li>
+<li><a class="reference internal" href="#list-window">&#8220;List&#8221; Window</a></li>
+<li><a class="reference internal" href="#add-window">&#8220;Add&#8221; Window</a></li>
+<li><a class="reference internal" href="#edit-window">&#8220;Edit&#8221; Window</a></li>
+<li><a class="reference internal" href="#error-window">&#8220;Error&#8221; Window</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-look-at-our-couchapp">A Look at our CouchApp</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="2-Start.html"
+                        title="previous chapter">First Steps with CouchAPP</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="4-Logic.html"
+                        title="next chapter">Program Logic</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/3-Interface.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="4-Logic.html" title="Program Logic"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="2-Start.html" title="First Steps with CouchAPP"
+             >previous</a> |</li>
+        <li><a href="index.html">Enotes CouchApp Tutorial v0.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Markus Mayr.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
