@@ -58,7 +58,7 @@ First, we enter a basic HTML structure. In the ``<head>`` section, we will fill 
             <title>eNotes</title>
             
             <link rel="stylesheet" href="style/jquery.mobile-1.0.css" type="text/css"/>
-            <link rel="stylesheet" href="style/jquery-ui-1.8.16.custom.css" type="text/css"/>
+            <link rel="stylesheet" href="style/jquery-ui-1.8.17.custom.css" type="text/css"/>
         </head>
         <body>
         
@@ -76,7 +76,7 @@ jQuery UI CSS
 _____________
 
 * You can get the **jQuery UI CSS** at http://jqueryui.com/download .
-* Open the downloaded archive and go to ``/css``. Depending on the version you downloaded, you will see a file like ``jquery-ui-1.8.16.custom.css`` and the directory ``/image`` a sub-folder further. Extract both of them to the ``/enotes/_attachments/style/`` folder.
+* Open the downloaded archive and go to ``/css``. Depending on the version you downloaded, you will see a file like ``jquery-ui-1.8.16.custom.css`` and the directory ``/image`` a sub-folder further. Extract both of them to the ``/enotes/_attachments/style/`` folder. Depending on the actual version of your files, you may have to change the references in ``index.html`` to the name of your file.
 * In the archive at ``/js/`` you will find two *.js* files. These need to be extracted to ``/enotes/vendor/couchapp/_attachments/``.
 
 jQuery Mobile CSS
