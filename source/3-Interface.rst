@@ -4,10 +4,6 @@ Write the Interface
 
 As said previously, the interface layout is defined by HTML and CSS. This HTML and CSS are stored as attachments in the design document of our application. When we want to execute our CouchApp, we simply call the HTML. We can access attachments just like normal web-pages via its URL.
 
-So, let's just open the file ``index.html`` in the folder ``./_attachments`` for editing.
-
-It is already filled with code which we will remove completely. So we will be left with an empty file. Now it's time to start filling in our own code!
-
 The following graphic gives an overview of the files we have to download and add to our CouchApp:
 
 .. graphviz::
@@ -42,6 +38,10 @@ The following graphic gives an overview of the files we have to download and add
     }
     
 Elements not encircled by a gray line are files and folders we will create in the next sections.
+
+So, let's just open the file ``index.html`` in the folder ``./_attachments`` for editing.
+
+It is already filled with code which we will remove completely. So we will be left with an empty file. Now it's time to start filling in our own code!
 
 HTML Structure & <head>
 -----------------------
