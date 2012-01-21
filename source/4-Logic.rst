@@ -237,14 +237,14 @@ file                         explanation                                        
                              used within a web browser.
 ``jquery.couch.js``          Comes with every CouchDB installation and offers a JavaScript     find it with a file search tool on your system
                              interface for the CouchApp.                                       
-``jquery-ui*.min.js``        The actual name of this file depends on the version you have      find it with a file search tool on your system
-                             dowloaded in the previous chapter. Remember to change the entry
+``jquery-ui*.min.js``        The actual name of this file depends on the version you have      already present, if not find it with a file 
+                             dowloaded in the previous chapter. Remember to change the entry   search tool on your system
                              in ``loader.js`` accordingly!
 ``jquery-1.6.2.min.js``      This is the actual jQuery library.                                :download:`Download a working copy here </_downloads/jquery-1.6.2.min.js>` 
                                                                                                or go to
                                                                                                http://docs.jquery.com/Downloading_jQuery
-``jquery.mobile-1.0.min.js`` The mobile version of jQuery. A newer version than the one        :download:`Download here </_downloads/jquery.mobile-1.0.min.js>`
-                             proposed here may also work for you. We already downloaded this   or find it at
+``jquery.mobile-1.0.min.js`` The mobile version of jQuery. A newer version than the one        Already present, if not: :download:`Download here 
+                             proposed here may also work for you. We already downloaded this   </_downloads/jquery.mobile-1.0.min.js>` or find it at
                              file in the previous chapter.                                     http://jquerymobile.com/download/
 ``jquery.pathbinder.js``     We need this file to use evently functions stored in the CouchApp :download:`Download here </_downloads/jquery.pathbinder.js>`
                              directory tree.
@@ -311,7 +311,7 @@ Now we will add some code that is only executed when certain events are triggere
 
 As we have encountered before, CouchApps are organised by maintaining a directory tree. This directory tree represents hierarchies. We can define functions for evently by storing these in the ``evently`` sub folder, we will create right now. Each function is located at a folder of its own inside the ``evently`` directory and replaces any already available function with the same name.
 
-At the beginning of every chapter you will be presented with a diagram of folders and files you have to create. If you get confused during the passages of text you can refer to this graphics to reorientate.
+At the beginning of every chapter you will be presented with a diagram of folders and files you have to create. If you get confused during the passages of text you can refer to this graphics to reorientate. Actually I would recommend to you to print the diagrams out.
 
 addPage - Event
 _______________
@@ -546,10 +546,10 @@ Back in the ``updateTitleList`` folder (take a look at the graphic at the beginn
 
 * **data.js**: This file is the main component of events. Here, data specific action is taking place. Usually, one would refer to a CochDB view or gather data otherwise here. In our case, the autocompletion field (which itslef is defined in the file ``mustache.html``) is set up.
 
-	.. code-block:: js
-	
+    .. code-block:: js
+    
         function (data) {
-            $.log("evently/titleListContent/updateTitleList/data.js");
+            $.log("evently/titleListContent/updateTitleList/data.js"); 
             var tag =  $("body").data.tagSelected;
             data.key = tag;
             return  data;
