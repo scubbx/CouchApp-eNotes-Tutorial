@@ -1128,3 +1128,5 @@ Inside this folder, also add a ``click.js`` file and fill it with this code:
 With this we have completed the core of our CouchApp. We can create new notes which will be displayed, grouped by their assigned tags and edit them. All of this happens inside the CouchDB and your browser.
 
 As usual, you should export the CouchApp directory tree to your CouchDB with the command ``enotes$ couchapp push enotes``. After that, access your CouchApp in your web browser at http://127.0.0.1:5984/enotes/_design/enotes/index.html.
+
+If you did everything right, your code should look exactly like the one in this example eNotes CouchApp which you :download:`can download here: enotes.zip </_downloads/enotes.zip>`.
