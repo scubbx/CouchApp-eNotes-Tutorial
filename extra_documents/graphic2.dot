@@ -1,104 +1,134 @@
 digraph {
-        graph [size="12,9"]
-        graph [ranksep=0.00]
-        graph [nodesep=0.00]
-        // graph [ratio=4]
-        graph [rankdir=TB]
-        // graph [orientation=landscape]
-        graph [ratio=auto]
+    graph [size="12,9"]
+    graph [ranksep=0.00]
+    graph [nodesep=0.00]
+    // graph [ratio=4]
+    graph [rankdir=TB]
+    // graph [orientation=landscape]
+    graph [ratio=auto]
+    graph [labelloc=t]
+    
+    node [fontname=Verdana,fontsize=10]
+    node [style=filled]
+    node [fillcolor="#EEEEEE"]
+    node [color="#EEEEEE"]
+    edge [color="#555555"]
+    edge [fontsize=8]
+    edge [arrowsize=0.5]
+    edge [fontcolor=grey]
+    
+    "enotes" [shape=box]
+    
+    "_attachments" [color="grey"]
+    "evently" [color="grey"]
+    "addPage" [color="grey"]
+    "_init" [color="grey"]
+    "selectors" [color="grey"]
+    "input" [color="grey"]
+    "editContent" [color="grey"]
+    "shownote " [color="grey"]
+    "_init " [color="grey"]
+    "selectors " [color="grey"]
+    "a[op=delete]" [color="grey"]
+    "a[op=save]" [color="grey"]
+    "editPage" [color="grey"]
+    "tagListPage" [color="grey"]
+    " selectors" [color="grey"]
+    " a " [color="grey"]
+    "tagListContent" [color="grey"]
+    "_init  " [color="grey"]
+    " selectors " [color="grey"]
+    "  a " [color="grey"]
+    "titleListPage" [color="grey"]
+    "titleListContent" [color="grey"]
+    "updateTitleList" [color="grey"]
+    "  selectors  " [color="grey"]
+    "  a  " [color="grey"]
+    "views" [color="grey"]
+    "DocbyTag" [color="grey"]
+    "DocbyTag2" [color="grey"]
+    
+    "enotes" -> "_attachments"
+        "_attachments" -> "index.html"
+        "_attachments" -> "logic.js"
         
-        node [fontname=Verdana,fontsize=8]
-        node [style=filled]
-        node [fillcolor="#EEEEEE"]
-        node [color="#EEEEEE"]
-        edge [color="#31CEF0"]
-        edge [fontsize=6]
-        edge [arrowsize=0.5]
-        edge [fontcolor=grey]
-        edge [labelfloat=true]
-        "enotes" [shape=box]
+    "enotes" -> "evently"
+        "evently" -> "addPage"
+            "addPage" -> "pagebeforeshow.js"
+            "addPage" -> "_init"
+                "_init" -> "selectors"
+                    "selectors" -> "input"
+                        "input" -> "click.js"
+
+        "evently" -> "editContent"
+            "editContent" -> "shownote "
+                "shownote " -> "data.js"
+                "shownote " -> "async.js"	
+                "shownote " -> "mustache.html"
+                "shownote " -> "after.js"
+            "editContent" -> "_init "
+                "_init " -> "selectors "
+                    "selectors " -> "a[op=delete]"
+                        "a[op=delete]" -> " click.js"
+                    "selectors " -> "a[op=save]"
+                        "a[op=save]" -> "  click.js"
         
-		"enotes" -> "_attachments"
-			"_attachments" -> "index.html"
-			"_attachments" -> "logic.js"
-			
-		"enotes" -> "evently"
-			"evently" -> "addPage"
-				"addPage" -> "pagebeforeshow.js"
-				"addPage" -> "_init"
-					"_init" -> "selectors"
-						"selectors" -> "input"
-							"input" -> "click.js"
+        "evently" -> "editPage"
+            "editPage" -> " pagebeforeshow.js"
+        
+        "evently" -> "tagListPage"
+            "tagListPage" -> "  pagebeforeshow.js"
+            "tagListPage" -> " selectors"
+                " selectors" -> " a "
+                    " a " -> " click .js"
+        
+        "evently" -> "tagListContent"
+            "tagListContent" -> "_init  "
+                "_init  " -> " mustache.html"
+                "_init  " -> " after.js"
+                "_init  " -> " data.js"
+                "_init  " -> " query.json"
+                "_init  " -> " selectors "
+                    " selectors " -> "  a "
+                        "  a " -> " click.js "
+        
+        "evently" -> "titleListPage"
+            "titleListPage" -> " pagebeforeshow.js "
+                    
+        "evently" -> "titleListContent"
+            "titleListContent" -> "updateTitleList"
+                "updateTitleList" -> "  data.js  "
+                "updateTitleList" -> "  async.js  "
+                "updateTitleList" -> "  mustache.html  "
+                "updateTitleList" -> "  after.js  "
+                "updateTitleList" -> "  selectors  "
+                    "  selectors  " -> "  a  "
+                        "  a  " -> "  click.js  "
 
-			"evently" -> "editContent"
-				"editContent" -> "shownote "
-					"shownote " -> "data.js"
-					"shownote " -> "async.js"	
-					"shownote " -> "mustache.html"
-					"shownote " -> "after.js"
-				"editContent" -> "_init "
-					"_init " -> "selectors "
-						"selectors " -> "a[op=delete]"
-							"a[op=delete]" -> " click.js"
-						"selectors " -> "a[op=save]"
-							"a[op=save]" -> "  click.js"
-			
-			"evently" -> "editPage"
-				"editPage" -> " pagebeforeshow.js"
-			
-			"evently" -> "tagListPage"
-				"tagListPage" -> "  pagebeforeshow.js"
-				"tagListPage" -> " selectors"
-					" selectors" -> " a "
-						" a " -> " click .js"
-			
-			"evently" -> "tagListContent"
-				"tagListContent" -> "_init  "
-					"_init  " -> " mustache.html"
-					"_init  " -> " after.js"
-					"_init  " -> " data.js"
-					"_init  " -> " query.json"
-					"_init  " -> " selectors "
-						" selectors " -> "  a "
-							"  a " -> " click.js "
-			
-			"evently" -> "titleListPage"
-				"titleListPage" -> " pagebeforeshow.js "
-						
-			"evently" -> "titleListContent"
-				"titleListContent" -> "updateTitleList"
-					"updateTitleList" -> "  data.js  "
-					"updateTitleList" -> "  async.js  "
-					"updateTitleList" -> "  mustache.html  "
-					"updateTitleList" -> "  after.js  "
-					"updateTitleList" -> "  selectors  "
-						"  selectors  " -> "  a  "
-							"  a  " -> "  click.js  "
+    "enotes" -> "views"
+        "views" -> "DocbyTag"
+            "DocbyTag" -> "map.js"
+            "DocbyTag" -> "reduce.js"
+        "views" -> "DocbyTag2"
+            "DocbyTag2" -> "map.js "
 
-		"enotes" -> "views"
-			"views" -> "DocbyTag"
-				"DocbyTag" -> "map.js"
-				"DocbyTag" -> "reduce.js"
-			"views" -> "DocbyTag2"
-				"DocbyTag2" -> "map.js "
-
-		
-		
-		"index.html" -> "logic.js" [color=grey, label="loads", constraint=false]
-		// "index.html" -> { "addPage"; "editContent"; "editPage"; "tagListPage"; "tagListContent"; "titleListPage"; "titleListContent"} [color=grey, label="links", concentrate=true]
-		"pagebeforeshow.js" -> "shownote " [color=grey, label="triggers"]
-		"click.js" -> "shownote " [color=grey, label="triggers"]
-		"click.js" -> "logic.js" [color=grey, label="doStoreDocument()"]
-		" pagebeforeshow.js " -> "updateTitleList" [color=grey, label="triggers"]
-		"  async.js  " -> "logic.js" [color=grey, label="doGetDoc()"]
-		"  async.js  " -> "logic.js" [color=grey, label="makeEmptyNote()"]
-		"  pagebeforeshow.js" -> "_init  " [color=grey, label="triggers"]
-		// " click.js " -> nur für REPLICATION
-		"  async.js  " -> "logic.js" [color=grey, label="doView()"]
-		" pagebeforeshow.js" -> "shownote " [color=grey, label="triggers"]
-		"shownote " -> "logic.js" [color=grey, label="doGetDoc()"]
-		" click.js" -> "logic.js" [color=grey, label="doDeleteDocument()"]
-		"  click.js" -> "logic.js" [color=grey, label="doStoreDocument()"]
-		"  click.js" -> "shownote " [color=grey, label="triggers"]
-		
-	}
+    
+    
+    "index.html" -> "logic.js" [color=grey, label="loads", constraint=false]
+    // "index.html" -> { "addPage"; "editContent"; "editPage"; "tagListPage"; "tagListContent"; "titleListPage"; "titleListContent"} [color=grey, label="links", concentrate=true]
+    "pagebeforeshow.js" -> "shownote " [color=grey, label="triggers"]
+    "click.js" -> "shownote " [color=grey, label="triggers"]
+    "click.js" -> "logic.js" [color=grey, label="doStoreDocument()"]
+    " pagebeforeshow.js " -> "updateTitleList" [color=grey, label="triggers"]
+    "  async.js  " -> "logic.js" [color=grey, label="doGetDoc()"]
+    "  async.js  " -> "logic.js" [color=grey, label="makeEmptyNote()"]
+    "  pagebeforeshow.js" -> "_init  " [color=grey, label="triggers"]
+    // " click.js " -> nur für REPLICATION
+    "  async.js  " -> "logic.js" [color=grey, label="doView()"]
+    " pagebeforeshow.js" -> "shownote " [color=grey, label="triggers"]
+    "shownote " -> "logic.js" [color=grey, label="doGetDoc()"]
+    " click.js" -> "logic.js" [color=grey, label="doDeleteDocument()"]
+    "  click.js" -> "logic.js" [color=grey, label="doStoreDocument()"]
+    "  click.js" -> "shownote " [color=grey, label="triggers"]
+    
+}
