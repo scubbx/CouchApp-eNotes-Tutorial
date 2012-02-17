@@ -13,7 +13,7 @@
 
 \title{CouchApp Tutorial Documentation}
 \date{February 17, 2012}
-\release{0.3}
+\release{0.3.1}
 \author{Markus Mayr}
 \newcommand{\sphinxlogo}{}
 \renewcommand{\releasename}{Release}
@@ -976,7 +976,7 @@ But for the function to do anything it must not only be defined, but also be cal
 
     \PYG{l+s+s2}{"vendor/couchapp/jquery-1.6.2.min.js"}\PYG{p}{,}
 
-    \PYG{l+s+s2}{"vendor/couchapp/jquery.couch.js"}\PYG{p}{,}
+    \PYG{l+s+s2}{"/\PYGZus{}utils/script/jquery.couch.js"}\PYG{p}{,}
     \PYG{l+s+s2}{"vendor/couchapp/jquery.couch.app.js"}\PYG{p}{,}
     \PYG{l+s+s2}{"vendor/couchapp/jquery.couch.app.util.js"}\PYG{p}{,}
 
@@ -1009,16 +1009,9 @@ where to get
 They refer to files already available within CouchDB. Remember,
 the path \code{/\_utils/} points to the CouchDB user interface when
 used within a web browser.
- & 
-already present
-\\
-
-\code{jquery.couch.js}
- & 
-Comes with every CouchDB installation and offers a JavaScript
 interface for the CouchApp.
  & 
-find it with a file search tool on your system
+already present
 \\
 
 \code{jquery-ui*.min.js}
