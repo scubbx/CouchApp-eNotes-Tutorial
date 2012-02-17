@@ -12,7 +12,7 @@
 
 
 \title{CouchApp Tutorial Documentation}
-\date{January 23, 2012}
+\date{February 17, 2012}
 \release{0.3}
 \author{Markus Mayr}
 \newcommand{\sphinxlogo}{}
@@ -115,15 +115,15 @@
 
 You will learn how to build a simple note taking application which is stored in a CouchDB. The complete logic, design and data of the application will be contained within a single database. This gives the benefit of CouchDBs replication feature and other database specific properties to your application for free.
 The application will run in any recent webbrowser that is able to interpret JavaScript - this means that it will work with mobile devices as well as with desktop computers.
-
 Basic knowledge of CouchDB, JavaScript and HTML is assumed. We will combine these and other techniques to produce a simple example.
 
 In this tutorial, system specific commands are based on \emph{Linux} / \emph{Bash}.
 
+The complete code of the example eNotes CouchApp we will create \code{can be downloaded here: enotes.zip}.
+
 Please be advised that you should follow this tutorial step by step if you want to have your CouchApp working right. There are a lot of cross references inside the code and it is easy to lose track. However, if you are confident enough to do otherwise, please feel free to do so. ;-)
 
 If you are interested in expanding this tutorial or correct an error, take a look at it's Github page: \href{https://github.com/scubbx/CouchApp-eNotes-Tutorial}{https://github.com/scubbx/CouchApp-eNotes-Tutorial}
-
 The code on github is open source.
 
 
@@ -1813,6 +1813,8 @@ Inside this folder, also add a \code{click.js} file and fill it with this code:
 With this we have completed the core of our CouchApp. We can create new notes which will be displayed, grouped by their assigned tags and edit them. All of this happens inside the CouchDB and your browser.
 
 As usual, you should export the CouchApp directory tree to your CouchDB with the command \code{enotes\$ couchapp push enotes}. After that, access your CouchApp in your web browser at \href{http://127.0.0.1:5984/enotes/\_design/enotes/index.html}{http://127.0.0.1:5984/enotes/\_design/enotes/index.html}.
+
+If you did everything right, your code should look exactly like the one in this example eNotes CouchApp which you \code{can download here: enotes.zip}.
 
 
 
