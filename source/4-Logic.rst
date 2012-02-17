@@ -194,7 +194,7 @@ But for the function to do anything it must not only be defined, but also be cal
         
         "vendor/couchapp/jquery-1.6.2.min.js",
         
-        "vendor/couchapp/jquery.couch.js",
+        "/_utils/script/jquery.couch.js",
         "vendor/couchapp/jquery.couch.app.js",
         "vendor/couchapp/jquery.couch.app.util.js",
         
@@ -235,7 +235,6 @@ file                         explanation                                        
 ``/_utils/*.*``              They refer to files already available within CouchDB. Remember,   already present
                              the path ``/_utils/`` points to the CouchDB user interface when 
                              used within a web browser.
-``jquery.couch.js``          Comes with every CouchDB installation and offers a JavaScript     find it with a file search tool on your system
                              interface for the CouchApp.                                       
 ``jquery-ui*.min.js``        The actual name of this file depends on the version you have      already present, if not find it with a file 
                              dowloaded in the previous chapter. Remember to change the entry   search tool on your system
