@@ -124,7 +124,7 @@ Most of the files we edit will form the design document of our CouchApp. Every d
 language
 ________
 
-This defines the pragramming language which is used for this project. Since we will only resort to ``javascript``, we leave the default entry as it is: ::
+This defines the programming language which is used for this project. Since we will only resort to ``javascript``, we leave the default entry as it is: ::
 
     javascript
 
@@ -136,7 +136,7 @@ This is some information about what CouchApp is and how to access it.
 ./_attachments
 ______________
 
-Here, files that define the layout, interface and basic functionality of our application are stored. Files ald folders located within its directory are included as attachments to the design document. I want to draw your attention to the file ``index.html``. It will contain our interface and is the file that is called when starting our CouchApp.
+Here, files that define the layout, interface and basic functionality of our application are stored. Files and folders located within its directory are included as attachments to the design document. I want to draw your attention to the file ``index.html``. It will contain our interface and is the file that is called when starting our CouchApp.
 
 ./lists   ./shows   ./updates   
 _____________________________
@@ -180,7 +180,7 @@ You should see a list of all your CouchDB databases of which one should be named
 
     .. image:: images/2_firstdb.png
 
-Klick on it and you will see all documents that are currently stored inside this database (which contains our enotes application).
+Click on it and you will see all documents that are currently stored inside this database (which contains our enotes application).
 
     .. image:: images/2_documents.jpg
     
